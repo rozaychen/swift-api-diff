@@ -23,7 +23,7 @@ function all_modules() {
     set -eu
     cd "$repodir"
     swift package dump-package | jq '.products |
-                                     map(select(.type | has("library") )) |
+                                     map(select(.name == "Amplify")) |
                                      map(.name) | .[]' | tr -d '"'
     )
 }
